@@ -1,4 +1,4 @@
-(async () => {
+(async (min_ratio) => {
     if (!document.querySelector('*[aria-label^="Amex EveryDay"]')) {
         console.info('Wrong card');
         return;
@@ -26,10 +26,10 @@
         } else {
             console.log(txt);
         }
-        if (ratio > 0 && ratio < 0.3) {
+        if (ratio > 0 && ratio < min_ratio) {
             console.log(txt);
             el_btn.click();
             await new Promise(r => setTimeout(r, 500));
         }
     }
-})()
+})(0.3)
