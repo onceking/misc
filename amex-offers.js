@@ -1,4 +1,8 @@
 (async () => {
+    if (!document.querySelector('*[aria-label^="Amex EveryDay"]')) {
+        console.info('Wrong card');
+        return;
+    }
     for (const el_btn of document.querySelectorAll('button[title="Add to Card"]')) {
         const txt = el_btn.closest('*[data-rowtype="offer"]').querySelector('.body-bold').textContent;
         let m;
@@ -22,7 +26,7 @@
         } else {
             console.log(txt);
         }
-        if (ratio > 0 && ratio < 0.2) {
+        if (ratio > 0 && ratio < 0.3) {
             console.log(txt);
             el_btn.click();
             await new Promise(r => setTimeout(r, 500));
